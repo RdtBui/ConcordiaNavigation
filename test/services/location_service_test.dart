@@ -81,7 +81,7 @@ void main() {
       when(location.getLocation()).thenAnswer((_) => Future.value(data));
 
       // Call method
-      firstLocationService.setCurrent();
+      //firstLocationService.setCurrent();
 
       // Verify
       verify(location.getLocation()).called(1);

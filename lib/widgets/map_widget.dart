@@ -5,7 +5,6 @@ import 'bottomsheet_widget.dart';
 import 'floating_map_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:concordia_navigation/models/user_location.dart';
 import 'package:concordia_navigation/providers/buildings_data.dart';
 import 'package:concordia_navigation/providers/map_data.dart';
 import 'package:concordia_navigation/services/size_config.dart';
@@ -26,7 +25,6 @@ class MapWidget extends StatefulWidget {
 class _MapWidgetState extends State<MapWidget> {
   CameraPosition _initialCamera;
   bool _campus = true;
-  var _location;
 
   //attributes for markers
   Set<Building> buildings = (new BuildingList()).getListOfBuildings();
@@ -45,23 +43,19 @@ class _MapWidgetState extends State<MapWidget> {
     "assets/markers/sp.png",
   };
 
-  Future setInitialCamera() async {
-    var location = UserLocation.fromLocationData(
-        await LocationService.getInstance().getLocationData());
+  void setInitialCamera() {
     _initialCamera = CameraPosition(
-      target: location.toLatLng(),
+      target: LocationService.currentLocation, // already loaded
       zoom: constants.CAMERA_ZOOM,
       tilt: constants.CAMERA_TILT,
       bearing: constants.CAMERA_BEARING,
     );
-    return location;
   }
 
   @override
   void initState() {
     super.initState();
-    Future location = setInitialCamera();
-    location.then((value) => _location = value);
+	setInitialCamera();
   }
 
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
@@ -84,15 +78,15 @@ class _MapWidgetState extends State<MapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (_location != null) {
+    if (LocationService.currentLocation != null) {
       Provider.of<MapData>(
         context,
         listen: false,
-      ).changeCurrentLocation(_location.toLatLng());
+      ).changeCurrentLocation(LocationService.currentLocation);
     }
     final _completer = Provider.of<MapData>(context).getCompleter;
     final _buildings = Provider.of<BuildingsData>(context);
-    final pos = Provider.of<UserLocation>(context);
+    //final pos = Provider.of<UserLocation>(context);
 
     while (_initialCamera == null) {
       return Center(child: Text("Loading Map"));
@@ -172,9 +166,9 @@ class _MapWidgetState extends State<MapWidget> {
           top: Provider.of<MapData>(context).locationButtonTop,
           left: SizeConfig.safeBlockHorizontal * 83,
           icon: Icon(Icons.gps_fixed),
-          onClick: () {
+          onClick: () {/*
             Provider.of<MapData>(context, listen: false)
-                .animateTo(pos.latitude, pos.longitude);
+                .animateTo(pos.latitude, pos.longitude);*/
           },
         ),
       ],

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:concordia_navigation/models/user_location.dart';
 import 'package:meta/meta.dart' show visibleForTesting;
@@ -7,14 +8,14 @@ import 'package:meta/meta.dart' show visibleForTesting;
 class LocationService {
   static LocationService _instance;
   UserLocation _current;
-  static Location _location;
+  static LatLng currentLocation;
   StreamController<UserLocation> _locationController;
 
   ///Private Constructor
   LocationService._() {
     _locationController = StreamController<UserLocation>();
-    _location ??= Location();
-    setCurrent();
+    //_location ??= Location();
+    //setCurrent();
     _locationController.add(_current);
     registerLocationUpdates();
   }
@@ -22,8 +23,8 @@ class LocationService {
   @visibleForTesting
   static getTestInstance(Location location) {
     ///Checks if instance is null before initializing it, else returns instance  --> (Singleton DP)
-    if(_location == null) _location = location;
-    if(_instance == null) _instance = LocationService._();
+    //if(_location == null) _location = location;
+    if (_instance == null) _instance = LocationService._();
     return _instance;
   }
 
@@ -41,7 +42,7 @@ class LocationService {
   Future<LocationData> getLocationData() async {
     LocationData loc;
     try {
-      loc = await _location.getLocation();
+      //loc = await _location.getLocation();
     } catch (e) {
       print('Location Service Error: $e');
     }
@@ -50,15 +51,15 @@ class LocationService {
   }
 
   ///Sets _current to current user location
-  void setCurrent() async {
-    Future<LocationData> future = getLocationData();
-    future.then((value) {
-      _current = new UserLocation.fromLocationData(value);
-    });
+  static Future<LatLng> setCurrent() async {
+    LocationData loc = await Location().getLocation();
+    currentLocation = LatLng(loc.latitude, loc.longitude);
+    return currentLocation;
   }
 
   ///Listen to location changes to continuously update user location on map
   void registerLocationUpdates() {
+    /*
     // request permission to use location
     _location.requestPermission().then((granted) async {
       if (granted != null) {
@@ -71,5 +72,6 @@ class LocationService {
         });
       }
     });
+  */
   }
 }
