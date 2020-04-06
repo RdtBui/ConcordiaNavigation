@@ -43,39 +43,39 @@ class _SplashScreenState extends State<SplashScreen>
     OutdoorPOIList.poi = await OutdoorPOIList.loadJson();
 
     print(campusData);
-    // IndoorData.shortest = Dijkstra.fromJson(campusData);
+    IndoorData.shortest = Dijkstra.fromJson(campusData);
 
-    // // Creating DAO's for campuses
-    // Campus.sgw = Campus.fromJson(campusData[0]);
-    // Campus.loy = Campus.fromJson(campusData[1]);
+    // Creating DAO's for campuses
+    Campus.sgw = Campus.fromJson(campusData[0]);
+    Campus.loy = Campus.fromJson(campusData[1]);
 
-    // BuildingsData.allBuildings2 = Campus.sgw.buildings.union(Campus.loy.buildings);
-    // BuildingsData.allBuildings2.forEach((building) => building.floors.forEach((floor) {
-    //       if (floor != null) {
-    //         floor.classrooms.forEach((classroom) {
-    //           BuildingsData.allIndoorLocations.add(classroom);
-    //         });
-    //         floor.indoorPois.forEach((indoorpoi) {
-    //           BuildingsData.allIndoorLocations.add(indoorpoi);
-    //         });
-    //       }
-    //     }));
+    BuildingsData.allBuildings2 = Campus.sgw.buildings.union(Campus.loy.buildings);
+    BuildingsData.allBuildings2.forEach((building) => building.floors.forEach((floor) {
+          if (floor != null) {
+            floor.classrooms.forEach((classroom) {
+              BuildingsData.allIndoorLocations.add(classroom);
+            });
+            floor.indoorPois.forEach((indoorpoi) {
+              BuildingsData.allIndoorLocations.add(indoorpoi);
+            });
+          }
+        }));
 
 
-    // Campus.sgw.buildings.forEach((building) async {
-    //   if (building.logo != null)
-    //     // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
-    //     //     ImageConfiguration(size: Size(350, 350)), building.logo);
-    //     Building.icons[building] = BitmapDescriptor.fromBytes(
-    //         await getBytesFromAsset(building.logo, 350));
-    // });
-    // Campus.loy.buildings.forEach((building) async {
-    //   if (building.logo != null)
-    //     // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
-    //     //     ImageConfiguration(size: Size(350, 350)), building.logo);
-    //     Building.icons[building] = BitmapDescriptor.fromBytes(
-    //         await getBytesFromAsset(building.logo, 350));
-    // });
+    Campus.sgw.buildings.forEach((building) async {
+      if (building.logo != null)
+        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
+        //     ImageConfiguration(size: Size(350, 350)), building.logo);
+        Building.icons[building] = BitmapDescriptor.fromBytes(
+            await getBytesFromAsset(building.logo, 350));
+    });
+    Campus.loy.buildings.forEach((building) async {
+      if (building.logo != null)
+        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
+        //     ImageConfiguration(size: Size(350, 350)), building.logo);
+        Building.icons[building] = BitmapDescriptor.fromBytes(
+            await getBytesFromAsset(building.logo, 350));
+    });
     print("done");
   }
 
