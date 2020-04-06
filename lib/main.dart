@@ -43,7 +43,7 @@ class App extends StatelessWidget {
         '/o_interest': (context) => OutdoorInterest(),
         '/settings': (context) => Settings(),
         '/shuttle': (context) => ShuttleSchedule(),
-        '/indoor': (context) => IndoorPage(),
+        // '/indoor': (context) => IndoorPage(),
       },
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),

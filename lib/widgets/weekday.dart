@@ -1,5 +1,5 @@
 import 'package:concordia_navigation/models/calendar/course.dart';
-import 'package:concordia_navigation/providers/map_data.dart';
+import 'package:concordia_navigation/providers/outdoor_data.dart';
 import 'package:concordia_navigation/services/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -51,48 +51,48 @@ class Weekday extends StatelessWidget {
                   ? () {
                       String letter = course.filteredLocation[0];
                       if (letter == "H") {
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeCampus('sgw');
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeEnd(constants.hBuilding);
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                                 .controllerDestination =
                             course.location[1] == "A"
                                 ? "Hall Building, Montreal"
                                 : course.location;
                       } else if (letter == "M") {
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeCampus('sgw');
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .controllerDestination = course.location;
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeEnd(constants.jmsbBuilding);
                       } else if (letter == "L") {
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeCampus('loyola');
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .controllerDestination = "Loyola Campus, Montreal";
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeEnd(constants.loyola);
                       } else if (letter == "J") {
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeCampus('sgw');
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                                 .controllerDestination =
                             "John Molson Business, Montreal";
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeEnd(constants.jmsbBuilding);
                       } else if (letter == "F") {
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeCampus('sgw');
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .controllerDestination = "FG Building, Montreal";
-                        Provider.of<MapData>(context, listen: false)
+                        Provider.of<OutdoorData>(context, listen: false)
                             .changeEnd(constants.fgBuilding);
                       }
-                      Provider.of<MapData>(context, listen: false)
+                      Provider.of<OutdoorData>(context, listen: false)
                           .controllerStarting = "Current Location";
-                      Provider.of<MapData>(context, listen: false)
+                      Provider.of<OutdoorData>(context, listen: false)
                           .setItinerary();
                       Navigator.of(context).pop();
                     }

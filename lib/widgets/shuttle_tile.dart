@@ -1,4 +1,4 @@
-import 'package:concordia_navigation/providers/map_data.dart';
+import 'package:concordia_navigation/providers/outdoor_data.dart';
 import 'package:concordia_navigation/services/outdoor/shuttle_service.dart';
 import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ShuttleTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String campus = Provider.of<MapData>(context, listen: false).getCampus;
+    String campus = Provider.of<OutdoorData>(context, listen: false).getCampus;
     String shuttleTime = ShuttleService.getNextShuttle(campus);
 
     return Container(

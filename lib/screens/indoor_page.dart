@@ -1,8 +1,14 @@
+import 'package:concordia_navigation/models/indoor/coordinate.dart';
+import 'package:concordia_navigation/models/indoor/indoor_location.dart';
+import 'package:concordia_navigation/models/node.dart';
+import 'package:concordia_navigation/providers/buildings_data.dart';
+import 'package:concordia_navigation/providers/indoor_data.dart';
 import 'package:concordia_navigation/services/painters.dart';
 import 'package:concordia_navigation/widgets/indoor/indoor_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class IndoorPage extends StatelessWidget {
   final PageController controller =
@@ -10,6 +16,23 @@ class IndoorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("indoor page");
+
+
+/*
+    path.moveTo(x, y); // required if moving before drawing
+    path.lineTo(x, y); // required to draw on the map
+
+    path.moveTo((940 * result[0].) / 1000,
+        (862 * LoadBuildingInfo.yRoomList[0]) / 920);
+    for (int i = 0; i < LoadBuildingInfo.xRoomList.length; i++) {
+      path.lineTo((940 * LoadBuildingInfo.xNearList[i]) / 1000,
+          (862 * LoadBuildingInfo.yNearList[i]) / 920);
+    }
+    path.lineTo((940 * LoadBuildingInfo.xRoomList[end]) / 1000,
+        (862 * LoadBuildingInfo.yRoomList[end]) / 920);
+        */
+
     return
 //    Scaffold(
 //      backgroundColor: constants.whiteColor,

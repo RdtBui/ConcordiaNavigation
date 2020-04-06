@@ -7,7 +7,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 ///Observer Pattern
 ///Handles all the data related to the map, listens to changes and notifies listeners.
-class MapData extends ChangeNotifier {
+class OutdoorData extends ChangeNotifier {
   Completer<GoogleMapController> _completer = Completer();
   PanelController panelController = new PanelController();
   String controllerStarting;
@@ -27,7 +27,7 @@ class MapData extends ChangeNotifier {
   LatLng _end;
   String _mode;
 
-  MapData() {
+  OutdoorData() {
     _mode = "driving";
   }
 

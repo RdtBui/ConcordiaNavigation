@@ -1,5 +1,7 @@
-/*
-import 'package:concordia_navigation/services/change_later.dart';
+import 'package:concordia_navigation/models/indoor/indoor_location.dart';
+import 'package:concordia_navigation/models/node.dart';
+import 'package:concordia_navigation/providers/buildings_data.dart';
+import 'package:concordia_navigation/providers/indoor_data.dart';
 import 'package:flutter/material.dart';
 
 class PainterService extends CustomPainter {
@@ -9,19 +11,31 @@ class PainterService extends CustomPainter {
     paint.color = Colors.red;
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = 3.0;
-    int end = LoadBuildingInfo.xRoomList.length - 1;
 
-    var path = Path();
+    List<Node> result = IndoorData.shortest.pathTo("entrance", "110");
+    List<String> names = [];
+    result.forEach((element) {
+      names.add(element.name);
+      print(element.name);
+    });
 
-    path.moveTo((940 * LoadBuildingInfo.xRoomList[0]) / 1000,
-        (862 * LoadBuildingInfo.yRoomList[0]) / 920);
-    for (int i = 0; i < LoadBuildingInfo.xRoomList.length; i++) {
-      path.lineTo((940 * LoadBuildingInfo.xNearList[i]) / 1000,
-          (862 * LoadBuildingInfo.yNearList[i]) / 920);
+    Set<IndoorLocation> all = BuildingsData.allIndoorLocations;
+
+    Path path = Path();
+    for (IndoorLocation loc in all) {
+      if (loc != null && loc.name != null) {
+        if (names.contains(loc.name)) {
+          if (loc == all.first) {
+            path.moveTo((940 * loc.room.x) / 1000, (862 * loc.room.y / 920));
+          }
+          path.lineTo(
+              (940 * loc.nearest.x) / 1000, (862 * loc.nearest.y / 920));
+          if (loc == all.last) {
+            path.lineTo((940 * loc.room.x) / 1000, (862 * loc.room.y / 920));
+          }
+        }
+      }
     }
-    path.lineTo((940 * LoadBuildingInfo.xRoomList[end]) / 1000,
-        (862 * LoadBuildingInfo.yRoomList[end]) / 920);
-
     canvas.drawPath(path, paint);
   }
 
@@ -30,5 +44,3 @@ class PainterService extends CustomPainter {
     return true;
   }
 }
-
-*/

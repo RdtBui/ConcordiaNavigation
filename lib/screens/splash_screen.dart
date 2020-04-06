@@ -1,7 +1,11 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:concordia_navigation/models/node.dart';
 import 'package:concordia_navigation/models/outdoor/building.dart';
 import 'package:concordia_navigation/models/outdoor/campus.dart';
+import 'package:concordia_navigation/providers/buildings_data.dart';
+import 'package:concordia_navigation/providers/indoor_data.dart';
+import 'package:concordia_navigation/services/dijkstra.dart';
 import 'package:concordia_navigation/services/location_search.dart';
 import 'package:concordia_navigation/services/outdoor/shuttle_service.dart';
 import 'package:concordia_navigation/services/outdoor_poi_list.dart';
@@ -38,24 +42,41 @@ class _SplashScreenState extends State<SplashScreen>
     LocationSearch.classrooms = await LocationSearch.loadJson();
     OutdoorPOIList.poi = await OutdoorPOIList.loadJson();
 
-    // Creating DAO's for campuses
-    Campus.sgw = Campus.fromJson(campusData[0]);
-    Campus.loy = Campus.fromJson(campusData[1]);
+    print(campusData);
+    // IndoorData.shortest = Dijkstra.fromJson(campusData);
 
-    Campus.sgw.buildings.forEach((building) async {
-      if (building.logo != null)
-        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
-        //     ImageConfiguration(size: Size(350, 350)), building.logo);
-        Building.icons[building] = BitmapDescriptor.fromBytes(
-            await getBytesFromAsset(building.logo, 350));
-    });
-    Campus.loy.buildings.forEach((building) async {
-      if (building.logo != null)
-        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
-        //     ImageConfiguration(size: Size(350, 350)), building.logo);
-        Building.icons[building] = BitmapDescriptor.fromBytes(
-            await getBytesFromAsset(building.logo, 350));
-    });
+    // // Creating DAO's for campuses
+    // Campus.sgw = Campus.fromJson(campusData[0]);
+    // Campus.loy = Campus.fromJson(campusData[1]);
+
+    // BuildingsData.allBuildings2 = Campus.sgw.buildings.union(Campus.loy.buildings);
+    // BuildingsData.allBuildings2.forEach((building) => building.floors.forEach((floor) {
+    //       if (floor != null) {
+    //         floor.classrooms.forEach((classroom) {
+    //           BuildingsData.allIndoorLocations.add(classroom);
+    //         });
+    //         floor.indoorPois.forEach((indoorpoi) {
+    //           BuildingsData.allIndoorLocations.add(indoorpoi);
+    //         });
+    //       }
+    //     }));
+
+
+    // Campus.sgw.buildings.forEach((building) async {
+    //   if (building.logo != null)
+    //     // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
+    //     //     ImageConfiguration(size: Size(350, 350)), building.logo);
+    //     Building.icons[building] = BitmapDescriptor.fromBytes(
+    //         await getBytesFromAsset(building.logo, 350));
+    // });
+    // Campus.loy.buildings.forEach((building) async {
+    //   if (building.logo != null)
+    //     // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
+    //     //     ImageConfiguration(size: Size(350, 350)), building.logo);
+    //     Building.icons[building] = BitmapDescriptor.fromBytes(
+    //         await getBytesFromAsset(building.logo, 350));
+    // });
+    print("done");
   }
 
   @override

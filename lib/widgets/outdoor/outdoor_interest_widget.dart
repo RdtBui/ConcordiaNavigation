@@ -1,5 +1,5 @@
 import 'package:concordia_navigation/models/outdoor/outdoor_poi.dart';
-import 'package:concordia_navigation/providers/map_data.dart';
+import 'package:concordia_navigation/providers/outdoor_data.dart';
 import 'package:concordia_navigation/services/size_config.dart';
 import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 import "package:flutter/material.dart";
@@ -85,7 +85,7 @@ class OutdoorInterestWidget extends StatelessWidget {
                       Container(
                         width: SizeConfig.safeBlockHorizontal * 24,
                         height: SizeConfig.safeBlockVertical * 5,
-                        child: Consumer<MapData>(
+                        child: Consumer<OutdoorData>(
                             builder: (context, mapData, child) {
                           return RaisedButton(
                             color: constants.appColor,

@@ -1,9 +1,9 @@
 import 'package:concordia_navigation/models/calendar/course.dart';
 import 'package:concordia_navigation/providers/calendar_data.dart';
+import 'package:concordia_navigation/providers/outdoor_data.dart';
 import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:concordia_navigation/providers/map_data.dart';
 import 'dart:convert' show json;
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -42,7 +42,7 @@ class LocationSearch extends SearchDelegate {
       }
     }
 
-    return Consumer<MapData>(builder: (context, mapData, child) {
+    return Consumer<OutdoorData>(builder: (context, mapData, child) {
       return ListView.builder(
         itemBuilder: (context, index) => ListTile(
           onTap: () async {

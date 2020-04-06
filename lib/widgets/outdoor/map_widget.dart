@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:concordia_navigation/models/outdoor/building.dart';
+import 'package:concordia_navigation/providers/outdoor_data.dart';
 import 'package:concordia_navigation/services/outdoor/location_service.dart';
 
 import 'bottomsheet_widget.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:concordia_navigation/models/user_location.dart';
 import 'package:concordia_navigation/providers/buildings_data.dart';
-import 'package:concordia_navigation/providers/map_data.dart';
 import 'package:concordia_navigation/services/size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:concordia_navigation/storage/app_constants.dart' as constants;
@@ -46,12 +46,12 @@ class _MapWidgetState extends State<MapWidget> {
   @override
   Widget build(BuildContext context) {
     if (_location != null) {
-      Provider.of<MapData>(
+      Provider.of<OutdoorData>(
         context,
         listen: false,
       ).changeCurrentLocation(_location.toLatLng());
     }
-    final _completer = Provider.of<MapData>(context).getCompleter;
+    final _completer = Provider.of<OutdoorData>(context).getCompleter;
     final _buildings = Provider.of<BuildingsData>(context);
     final pos = Provider.of<UserLocation>(context);
 
@@ -94,34 +94,34 @@ class _MapWidgetState extends State<MapWidget> {
             trafficEnabled: false,
             initialCameraPosition: _initialCamera,
             polylines:
-                Provider.of<MapData>(context).itinerary?.polylines?.toSet(),
+                Provider.of<OutdoorData>(context).itinerary?.polylines?.toSet(),
             onMapCreated: (controller) async {
               _completer.complete(controller);
             }),
         FloatingMapButton(
-          top: Provider.of<MapData>(context).swapButtonTop,
+          top: Provider.of<OutdoorData>(context).swapButtonTop,
           left: SizeConfig.safeBlockHorizontal * 83,
           icon: Icon(Icons.swap_calls),
           onClick: () {
             _campus
                 ? () {
-                    Provider.of<MapData>(context, listen: false).animateTo(
+                    Provider.of<OutdoorData>(context, listen: false).animateTo(
                         constants.sgw.latitude, constants.sgw.longitude);
                     _campus = false;
                   }()
                 : () {
-                    Provider.of<MapData>(context, listen: false).animateTo(
+                    Provider.of<OutdoorData>(context, listen: false).animateTo(
                         constants.loyola.latitude, constants.loyola.longitude);
                     _campus = true;
                   }();
           },
         ),
         FloatingMapButton(
-          top: Provider.of<MapData>(context).locationButtonTop,
+          top: Provider.of<OutdoorData>(context).locationButtonTop,
           left: SizeConfig.safeBlockHorizontal * 83,
           icon: Icon(Icons.gps_fixed),
           onClick: () {
-            Provider.of<MapData>(context, listen: false)
+            Provider.of<OutdoorData>(context, listen: false)
                 .animateTo(pos.latitude, pos.longitude);
           },
         ),

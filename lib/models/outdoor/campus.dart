@@ -15,8 +15,10 @@ class Campus {
     this.name = json['campusName'];
     this.initials = json['campusInitials'];
 
-    for (int bIndex = 0; bIndex < json['buildings'].length; bIndex++)
-      buildings.add(Building.fromJson(json['buildings'][bIndex]));
+    for (int bIndex = 0; bIndex < json['buildings'].length; bIndex++) {
+      Building temp = Building.fromJson(json['buildings'][bIndex]);
+      if (temp != null && temp.buildingInitials != null) buildings.add(temp);
+    }
   }
 
   ///For reading the file

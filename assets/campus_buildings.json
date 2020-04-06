@@ -1714,9 +1714,15 @@
 										"y": 400
 									}
 								},
-								"edges":[
-									{"name": "entrance", "distance": 3},
-									{"name": "checkMM", "distance": 1 }
+								"edges": [
+									{
+										"name": "entrance",
+										"distance": 3
+									},
+									{
+										"name": "checkMM",
+										"distance": 2
+									}
 								]
 							},
 							{
@@ -1731,10 +1737,23 @@
 										"y": 560
 									}
 								},
-								"edges":[
-									{"name": "entrance", "distance": 2},
-									{"name": "women", "distance": 2},
-									{"name": "escalatorUp", "distance": 2}
+								"edges": [
+									{
+										"name": "110",
+										"distance": 2
+									},
+									{
+										"name": "entrance",
+										"distance": 2
+									},
+									{
+										"name": "women",
+										"distance": 2
+									},
+									{
+										"name": "escalatorUp",
+										"distance": 2
+									}
 								]
 							}
 						],
@@ -1751,10 +1770,19 @@
 										"y": 560
 									}
 								},
-								"edges":[
-									{"name": "security", "distance": 2},
-									{"name": "escalatorDown", "distance": 1},
-									{"name": "escalatorUp", "distance": 1}
+								"edges": [
+									{
+										"name": "security",
+										"distance": 2
+									},
+									{
+										"name": "escalatorDown",
+										"distance": 1
+									},
+									{
+										"name": "escalatorUp",
+										"distance": 1
+									}
 								]
 							},
 							{
@@ -1769,9 +1797,15 @@
 										"y": 230
 									}
 								},
-								"edges":[
-									{"name": "men", "distance": 1},
-									{"name": "elevator", "distance": 2}
+								"edges": [
+									{
+										"name": "men",
+										"distance": 1
+									},
+									{
+										"name": "elevator",
+										"distance": 2
+									}
 								]
 							},
 							{
@@ -1785,7 +1819,13 @@
 										"x": 535,
 										"y": 100
 									}
-								}
+								},
+								"edges": [
+									{
+										"name": "women",
+										"distance": 1
+									}
+								]
 							},
 							{
 								"name": "entrance",
@@ -1799,8 +1839,19 @@
 										"y": 830
 									}
 								},
-								"edges":[
-									{"name": "escalatorDown", "distance": 4}
+								"edges": [
+									{
+										"name": "escalatorDown",
+										"distance": 4
+									},
+									{
+										"name": "checkMM",
+										"distance": 2
+									},
+									{
+										"name": "110",
+										"distance": 3
+									}
 								]
 							},
 							{
@@ -1815,8 +1866,15 @@
 										"y": 230
 									}
 								},
-								"edges":[
-									{"name": "security", "distance": 1}
+								"edges": [
+									{
+										"name": "security",
+										"distance": 1
+									},
+									{
+										"name": "women",
+										"distance": 2
+									}
 								]
 							},
 							{
@@ -1831,8 +1889,19 @@
 										"y": 560
 									}
 								},
-								"edges":[
-									{"name": "escalatorDown", "distance": 1}
+								"edges": [
+									{
+										"name": "escalatorDown",
+										"distance": 1
+									},
+									{
+										"name": "checkMM",
+										"distance": 2
+									},
+									{
+										"name": "exitMR",
+										"distance": 1
+									}
 								]
 							},
 							{
@@ -1846,7 +1915,21 @@
 										"x": 880,
 										"y": 831
 									}
-								}
+								},
+								"edges": [
+									{
+										"name": "escalatorUp",
+										"distance": 1
+									},
+									{
+										"name": "entrance",
+										"distance": 4
+									},
+									{
+										"name": "exitMR",
+										"distance": 1
+									}
+								]
 							},
 							{
 								"name": "security",
@@ -1859,7 +1942,17 @@
 										"x": 880,
 										"y": 230
 									}
-								}
+								},
+								"edges": [
+									{
+										"name": "elevator",
+										"distance": 1
+									},
+									{
+										"name": "exitMR",
+										"distance": 2
+									}
+								]
 							}
 						]
 					},

@@ -7,11 +7,60 @@ class Dijkstra {
   Map<String, Node> _nodes;
   PriorityQueue<Node> _pq;
 
+  Dijkstra.fromJson(List json) {
+    _nodes = {};
+    _pq = PriorityQueue<Node>();
+
+    json.forEach((campus) => campus['buildings']
+        ?.forEach((building) => building['floors']?.forEach((floor) {
+              if (floor['classrooms'] != null && floor['poi'] != null) {
+                floor['classrooms'].forEach((classroom) {
+                  if (classroom['name'] != null) {
+                    _nodes[classroom['name']] = Node(classroom['name']);
+                  }
+                });
+                floor['poi'].forEach((poi) {
+                  if (poi['name'] != null) {
+                    _nodes[poi['name']] = Node(poi['name']);
+                  }
+                });
+              }
+            })));
+
+    json.forEach((campus) => campus['buildings']
+        ?.forEach((building) => building['floors']?.forEach((floor) {
+              if (floor['classrooms'] != null) {
+                floor['classrooms']?.forEach((classroom) {
+                  if (classroom['edges'] != null) {
+                    classroom['edges'].forEach((edge) {
+                      if (edge['name'] != null)
+                        _nodes[classroom['name']]
+                            .setEdge(_nodes[edge['name']], edge['distance']);
+                    });
+                  }
+                });
+                floor['poi']?.forEach((poi) {
+                  if (poi['edges'] != null) {
+                    poi['edges'].forEach((edge) {
+                      if (edge['name'] != null)
+                        _nodes[poi['name']]
+                            .setEdge(_nodes[edge['name']], edge['distance']);
+                    });
+                  }
+                });
+              }
+            })));
+
+    _nodes.forEach((key, value) {if (value == null) print(key);});
+
+    _compute(_nodes.entries.first.key);
+  }
+
   Dijkstra.fromGraph(Map<String, Node> nodes)
       : _nodes = nodes,
         _pq = PriorityQueue<Node>();
 
-  List<Node> getPath(String start, String end) {
+  List<Node> pathTo(String start, String end) {
     if (_nodes[end].previous == null) {
       _compute(start);
     }
@@ -53,6 +102,5 @@ class Dijkstra {
         }
       });
     }
-
   }
 }

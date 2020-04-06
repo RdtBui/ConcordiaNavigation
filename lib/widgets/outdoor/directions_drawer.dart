@@ -1,4 +1,4 @@
-import 'package:concordia_navigation/providers/map_data.dart';
+import 'package:concordia_navigation/providers/outdoor_data.dart';
 import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 import 'package:concordia_navigation/services/size_config.dart';
 import 'package:concordia_navigation/widgets/shuttle_widget.dart';
@@ -17,32 +17,34 @@ class DirectionsDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<Map<String, Map<String, String>>> fetchItinerary() async {
       Map<String, Map<String, String>> test =
-          Provider.of<MapData>(context, listen: false)?.itinerary?.itinerary;
+          Provider.of<OutdoorData>(context, listen: false)
+              ?.itinerary
+              ?.itinerary;
       await Future.delayed(Duration(seconds: 1));
       return Future.value(test);
     }
 
     SlidingUpPanel sp = SlidingUpPanel(
         onPanelClosed: () {
-          Provider.of<MapData>(context, listen: false)
+          Provider.of<OutdoorData>(context, listen: false)
               .changeSwapTop(SizeConfig.safeBlockVertical * 57);
-          Provider.of<MapData>(context, listen: false)
+          Provider.of<OutdoorData>(context, listen: false)
               .changeLocationTop(SizeConfig.safeBlockVertical * 66);
         },
         onPanelOpened: () {
-          Provider.of<MapData>(context, listen: false)
+          Provider.of<OutdoorData>(context, listen: false)
               .changeSwapTop(SizeConfig.safeBlockVertical * 66);
-          Provider.of<MapData>(context, listen: false)
+          Provider.of<OutdoorData>(context, listen: false)
               .changeLocationTop(SizeConfig.safeBlockVertical * 75);
         },
-        controller: Provider.of<MapData>(context).panelController,
+        controller: Provider.of<OutdoorData>(context).panelController,
         maxHeight: SizeConfig.safeBlockVertical * 85,
         defaultPanelState: PanelState.CLOSED,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40),
           topRight: Radius.circular(40),
         ),
-        panel: Consumer<MapData>(
+        panel: Consumer<OutdoorData>(
             builder: (BuildContext context, mapData, Widget child) => Column(
                   children: <Widget>[
                     Container(
@@ -164,17 +166,17 @@ class DirectionsDrawer extends StatelessWidget {
                                         icon: Icon(Icons.close),
                                         color: constants.whiteColor,
                                         onPressed: () {
-                                          Provider.of<MapData>(context,
+                                          Provider.of<OutdoorData>(context,
                                                   listen: false)
                                               .changeSwapTop(
                                                   SizeConfig.safeBlockVertical *
                                                       66);
-                                          Provider.of<MapData>(context,
+                                          Provider.of<OutdoorData>(context,
                                                   listen: false)
                                               .changeLocationTop(
                                                   SizeConfig.safeBlockVertical *
                                                       75);
-                                          Provider.of<MapData>(context,
+                                          Provider.of<OutdoorData>(context,
                                                   listen: false)
                                               .removeItinerary();
                                           if (_swapCar ==
@@ -244,7 +246,8 @@ class DirectionsDrawer extends StatelessWidget {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
-                                                Provider.of<MapData>(context,
+                                                Provider.of<OutdoorData>(
+                                                        context,
                                                         listen: false)
                                                     .controllerStarting,
                                                 style: GoogleFonts.raleway(
@@ -294,7 +297,8 @@ class DirectionsDrawer extends StatelessWidget {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
-                                                Provider.of<MapData>(context,
+                                                Provider.of<OutdoorData>(
+                                                        context,
                                                         listen: false)
                                                     .controllerDestination,
                                                 style: GoogleFonts.raleway(
@@ -320,15 +324,18 @@ class DirectionsDrawer extends StatelessWidget {
                                   var start = mapData.getStart;
                                   mapData.changeStart(mapData.getEnd);
                                   mapData.changeEnd(start);
-                                  String temp = Provider.of<MapData>(context,
+                                  String temp = Provider.of<OutdoorData>(
+                                          context,
                                           listen: false)
                                       .controllerStarting;
-                                  Provider.of<MapData>(context, listen: false)
+                                  Provider.of<OutdoorData>(context,
+                                              listen: false)
                                           .controllerStarting =
-                                      Provider.of<MapData>(context,
+                                      Provider.of<OutdoorData>(context,
                                               listen: false)
                                           .controllerDestination;
-                                  Provider.of<MapData>(context, listen: false)
+                                  Provider.of<OutdoorData>(context,
+                                          listen: false)
                                       .controllerDestination = temp;
                                   mapData.setItinerary();
                                 },
@@ -463,7 +470,7 @@ class DirectionsDrawer extends StatelessWidget {
                   ],
                 )));
 
-    if (Provider.of<MapData>(context).itinerary == null) {
+    if (Provider.of<OutdoorData>(context).itinerary == null) {
       return Container(); // return an empty Container() if the itinerary object is null
     } else {
       return sp; // else return the SlidingUpPanel containing directions

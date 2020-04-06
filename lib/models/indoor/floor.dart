@@ -11,10 +11,14 @@ class Floor {
   Floor.fromJson(Map json) {
     this.floorNumber = int.parse(json['number']);
 
-    for (int i = 0; i < json['classrooms'].length; i++)
-      classrooms.add(Classroom.fromJson(json['classrooms'][i]));
+    for (int i = 0; i < json['classrooms'].length; i++) {
+      Classroom temp = Classroom.fromJson(json['classrooms'][i]);
+      if (temp != null) classrooms.add(temp);
+    }
 
-    for (int i = 0; i < json['classrooms'].length; i++)
-      indoorPois.add(IndoorPOI.fromJson(json['classrooms'][i]));
+    for (int i = 0; i < json['poi'].length; i++) {
+      IndoorPOI temp = IndoorPOI.fromJson(json['poi'][i]);
+      if (temp != null) indoorPois.add(temp);
+    }
   }
 }

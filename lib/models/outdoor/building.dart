@@ -43,7 +43,10 @@ class Building {
 
     if (json['floors'] != null) {
       for (int k = 0; k < json['floors'].length; k++) {
-        this.floors.add(Floor.fromJson(json['floors'][k]));
+        if (json['floors'][k] != null) {
+          Floor temp = Floor.fromJson(json['floors'][k]);
+          if (temp != null) this.floors.add(temp);
+        }
       }
     }
 

@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'package:concordia_navigation/providers/map_data.dart';
+import 'package:concordia_navigation/providers/outdoor_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   group('MapData', () {
-    MapData mapData;
+    OutdoorData mapData;
 
     setUpAll(() {
-      mapData = new MapData();
+      mapData = new OutdoorData();
     });
 
     test('constructor initializes mode to driving', () {
