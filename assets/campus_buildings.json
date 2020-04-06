@@ -1716,17 +1716,17 @@
 								},
 								"edges": [
 									{
-										"name": "entrance",
+										"name": "entranceH1",
 										"distance": 3
 									},
 									{
-										"name": "checkMM",
+										"name": "checkMMH1",
 										"distance": 2
 									}
 								]
 							},
 							{
-								"name": "checkMM",
+								"name": "checkMMH1",
 								"coordinates": {
 									"room": {
 										"x": 535,
@@ -1743,15 +1743,15 @@
 										"distance": 2
 									},
 									{
-										"name": "entrance",
+										"name": "entranceH1",
 										"distance": 2
 									},
 									{
-										"name": "women",
+										"name": "womenH1",
 										"distance": 2
 									},
 									{
-										"name": "escalatorUp",
+										"name": "escalatorUpH1",
 										"distance": 2
 									}
 								]
@@ -1759,7 +1759,7 @@
 						],
 						"poi": [
 							{
-								"name": "exitMR",
+								"name": "exitMRH1",
 								"coordinates": {
 									"room": {
 										"x": 952,
@@ -1776,17 +1776,17 @@
 										"distance": 2
 									},
 									{
-										"name": "escalatorDown",
+										"name": "escalatorDownH1",
 										"distance": 1
 									},
 									{
-										"name": "escalatorUp",
+										"name": "escalatorUpH1",
 										"distance": 1
 									}
 								]
 							},
 							{
-								"name": "women",
+								"name": "womenH1",
 								"coordinates": {
 									"room": {
 										"x": 500,
@@ -1799,17 +1799,17 @@
 								},
 								"edges": [
 									{
-										"name": "men",
+										"name": "menH1",
 										"distance": 1
 									},
 									{
-										"name": "elevator",
+										"name": "elevatorH1",
 										"distance": 2
 									}
 								]
 							},
 							{
-								"name": "men",
+								"name": "menH1",
 								"coordinates": {
 									"room": {
 										"x": 500,
@@ -1822,13 +1822,13 @@
 								},
 								"edges": [
 									{
-										"name": "women",
+										"name": "womenH1",
 										"distance": 1
 									}
 								]
 							},
 							{
-								"name": "entrance",
+								"name": "entranceH1",
 								"coordinates": {
 									"room": {
 										"x": 325,
@@ -1841,11 +1841,11 @@
 								},
 								"edges": [
 									{
-										"name": "escalatorDown",
+										"name": "escalatorDownH1",
 										"distance": 4
 									},
 									{
-										"name": "checkMM",
+										"name": "checkMMH1",
 										"distance": 2
 									},
 									{
@@ -1855,7 +1855,7 @@
 								]
 							},
 							{
-								"name": "elevator",
+								"name": "elevatorH1",
 								"coordinates": {
 									"room": {
 										"x": 707,
@@ -1872,13 +1872,13 @@
 										"distance": 1
 									},
 									{
-										"name": "women",
+										"name": "womenH1",
 										"distance": 2
 									}
 								]
 							},
 							{
-								"name": "escalatorUp",
+								"name": "escalatorUpH1",
 								"coordinates": {
 									"room": {
 										"x": 771,
@@ -1891,21 +1891,21 @@
 								},
 								"edges": [
 									{
-										"name": "escalatorDown",
+										"name": "escalatorDownH1",
 										"distance": 1
 									},
 									{
-										"name": "checkMM",
+										"name": "checkMMH1",
 										"distance": 2
 									},
 									{
-										"name": "exitMR",
+										"name": "exitMRH1",
 										"distance": 1
 									}
 								]
 							},
 							{
-								"name": "escalatorDown",
+								"name": "escalatorDownH1",
 								"coordinates": {
 									"room": {
 										"x": 835,
@@ -1918,15 +1918,15 @@
 								},
 								"edges": [
 									{
-										"name": "escalatorUp",
+										"name": "escalatorUpH1",
 										"distance": 1
 									},
 									{
-										"name": "entrance",
+										"name": "entranceH1",
 										"distance": 4
 									},
 									{
-										"name": "exitMR",
+										"name": "exitMRH1",
 										"distance": 1
 									}
 								]
@@ -1945,11 +1945,11 @@
 								},
 								"edges": [
 									{
-										"name": "elevator",
+										"name": "elevatorH1",
 										"distance": 1
 									},
 									{
-										"name": "exitMR",
+										"name": "exitMRH1",
 										"distance": 2
 									}
 								]
@@ -3860,7 +3860,7 @@
 								}
 							},
 							{
-								"name": "entrance",
+								"name": "entrance5",
 								"coordinates": {
 									"room": {
 										"x": 879.07,

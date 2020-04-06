@@ -50,9 +50,9 @@ class _SplashScreenState extends State<SplashScreen>
 
     BuildingsData.allBuildings2 =
         Campus.sgw.buildings.union(Campus.loy.buildings);
-    BuildingsData.allBuildings2.forEach((building) => building.floors.forEach(
-        (floor) =>
-            floor.classrooms.forEach((classroom) => print(classroom.name))));
+//    BuildingsData.allBuildings2.forEach((building) => building.floors.forEach(
+//        (floor) =>
+//            floor.classrooms.forEach((classroom) => print(classroom.name))));
     BuildingsData.allBuildings2
         .forEach((building) => building.floors.forEach((floor) {
               if (floor != null) {
@@ -79,7 +79,6 @@ class _SplashScreenState extends State<SplashScreen>
         Building.icons[building] = BitmapDescriptor.fromBytes(
             await getBytesFromAsset(building.logo, 350));
     });
-    print("done");
   }
 
   @override

@@ -12,28 +12,32 @@ class PainterService extends CustomPainter {
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = 3.0;
 
-    List<Node> result = IndoorData.shortest.pathTo("entrance", "exitMR");
+    List<Node> result = IndoorData.shortest.pathTo("110", "exitMRH1");
     List<String> names = [];
     result.forEach((element) {
       if (element.name != null) names.add(element.name);
     });
-
     Set<IndoorLocation> all = BuildingsData.allIndoorLocations;
     //all.where((elem) => elem.name != null);
-    all.forEach((elem) => print(elem.name));
-
+//    all.forEach((elem) => print(elem.name));
     Path path = Path();
+//    path.moveTo(
+//        (940 * all.first.room.x) / 1000, (862 * all.first.room.y / 920));
+//    for (IndoorLocation loc in all) {
+//      if (loc.name != null) {
+////        print(result);
+//      }
+//        path.lineTo((940 * loc.nearest.x) / 1000, (862 * loc.nearest.y / 920));
+//    }
+//    path.lineTo((940 * all.last.room.x) / 1000, (862 * all.last.room.y / 920));
     for (IndoorLocation loc in all) {
-      if (loc != null && loc.name != null) {
-        if (names.contains(loc.name)) {
-          if (loc == all.first) {
-            path.moveTo((940 * loc.room.x) / 1000, (862 * loc.room.y / 920));
-          }
-          path.lineTo(
-              (940 * loc.nearest.x) / 1000, (862 * loc.nearest.y / 920));
-          if (loc == all.last) {
-            path.lineTo((940 * loc.room.x) / 1000, (862 * loc.room.y / 920));
-          }
+      if (names.contains(loc.name)) {
+        if (loc == all.first) {
+          path.moveTo((940 * loc.room.x) / 1000, (862 * loc.room.y / 920));
+        }
+        path.lineTo((940 * loc.nearest.x) / 1000, (862 * loc.nearest.y / 920));
+        if (loc.name == names.last) {
+          path.lineTo((940 * loc.room.x) / 1000, (862 * loc.room.y / 920));
         }
       }
     }
