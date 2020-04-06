@@ -16,9 +16,6 @@ class IndoorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("indoor page");
-
-
 /*
     path.moveTo(x, y); // required if moving before drawing
     path.lineTo(x, y); // required to draw on the map
