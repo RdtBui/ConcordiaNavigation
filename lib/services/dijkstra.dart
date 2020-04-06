@@ -7,21 +7,20 @@ class Dijkstra {
   Map<String, Node> _nodes;
   PriorityQueue<Node> _pq;
 
-  Dijkstra.fromJson(List json) {
-    _nodes = {};
-    _pq = PriorityQueue<Node>();
+  static Dijkstra fromJson(List json) {
+    Map<String, Node> graph = {};
 
     json.forEach((campus) => campus['buildings']
         ?.forEach((building) => building['floors']?.forEach((floor) {
               if (floor['classrooms'] != null && floor['poi'] != null) {
                 floor['classrooms'].forEach((classroom) {
                   if (classroom['name'] != null) {
-                    _nodes[classroom['name']] = Node(classroom['name']);
+                    graph[classroom['name']] = Node(classroom['name']);
                   }
                 });
                 floor['poi'].forEach((poi) {
                   if (poi['name'] != null) {
-                    _nodes[poi['name']] = Node(poi['name']);
+                    graph[poi['name']] = Node(poi['name']);
                   }
                 });
               }
@@ -34,8 +33,8 @@ class Dijkstra {
                   if (classroom['edges'] != null) {
                     classroom['edges'].forEach((edge) {
                       if (edge['name'] != null)
-                        _nodes[classroom['name']]
-                            .setEdge(_nodes[edge['name']], edge['distance']);
+                        graph[classroom['name']]
+                            .setEdge(graph[edge['name']], edge['distance']);
                     });
                   }
                 });
@@ -43,17 +42,15 @@ class Dijkstra {
                   if (poi['edges'] != null) {
                     poi['edges'].forEach((edge) {
                       if (edge['name'] != null)
-                        _nodes[poi['name']]
-                            .setEdge(_nodes[edge['name']], edge['distance']);
+                        graph[poi['name']]
+                            .setEdge(graph[edge['name']], edge['distance']);
                     });
                   }
                 });
               }
             })));
 
-    _nodes.forEach((key, value) {if (value == null) print(key);});
-
-    _compute(_nodes.entries.first.key);
+    return Dijkstra.fromGraph(graph);
   }
 
   Dijkstra.fromGraph(Map<String, Node> nodes)
@@ -67,9 +64,11 @@ class Dijkstra {
 
     Queue<Node> inOrder = Queue<Node>();
     inOrder.addFirst(_nodes[end]);
-    while (end != start && _nodes[end].previous != null) {
+    bool stop = false;
+    while (!stop) {
       inOrder.addFirst(_nodes[end].previous);
       end = _nodes[end].previous.name;
+      stop = end == start;
     }
 
     return inOrder.toList();

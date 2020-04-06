@@ -12,14 +12,15 @@ class PainterService extends CustomPainter {
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = 3.0;
 
-    List<Node> result = IndoorData.shortest.pathTo("entrance", "110");
+    List<Node> result = IndoorData.shortest.pathTo("entrance", "exitMR");
     List<String> names = [];
     result.forEach((element) {
-      names.add(element.name);
-      print(element.name);
+      if (element.name != null) names.add(element.name);
     });
 
     Set<IndoorLocation> all = BuildingsData.allIndoorLocations;
+    //all.where((elem) => elem.name != null);
+    all.forEach((elem) => print(elem.name));
 
     Path path = Path();
     for (IndoorLocation loc in all) {

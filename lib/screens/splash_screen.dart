@@ -42,25 +42,28 @@ class _SplashScreenState extends State<SplashScreen>
     LocationSearch.classrooms = await LocationSearch.loadJson();
     OutdoorPOIList.poi = await OutdoorPOIList.loadJson();
 
-    print(campusData);
     IndoorData.shortest = Dijkstra.fromJson(campusData);
 
     // Creating DAO's for campuses
     Campus.sgw = Campus.fromJson(campusData[0]);
     Campus.loy = Campus.fromJson(campusData[1]);
 
-    BuildingsData.allBuildings2 = Campus.sgw.buildings.union(Campus.loy.buildings);
-    BuildingsData.allBuildings2.forEach((building) => building.floors.forEach((floor) {
-          if (floor != null) {
-            floor.classrooms.forEach((classroom) {
-              BuildingsData.allIndoorLocations.add(classroom);
-            });
-            floor.indoorPois.forEach((indoorpoi) {
-              BuildingsData.allIndoorLocations.add(indoorpoi);
-            });
-          }
-        }));
-
+    BuildingsData.allBuildings2 =
+        Campus.sgw.buildings.union(Campus.loy.buildings);
+    BuildingsData.allBuildings2.forEach((building) => building.floors.forEach(
+        (floor) =>
+            floor.classrooms.forEach((classroom) => print(classroom.name))));
+    BuildingsData.allBuildings2
+        .forEach((building) => building.floors.forEach((floor) {
+              if (floor != null) {
+                floor.classrooms.forEach((classroom) {
+                  BuildingsData.allIndoorLocations.add(classroom);
+                });
+                floor.indoorPois.forEach((indoorpoi) {
+                  BuildingsData.allIndoorLocations.add(indoorpoi);
+                });
+              }
+            }));
 
     Campus.sgw.buildings.forEach((building) async {
       if (building.logo != null)
