@@ -18,15 +18,15 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-Future<Uint8List> getBytesFromAsset(String path, int width) async {
-  ByteData data = await rootBundle.load(path);
-  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
-      targetWidth: width);
-  ui.FrameInfo fi = await codec.getNextFrame();
-  return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
-      .buffer
-      .asUint8List();
-}
+//Future<Uint8List> getBytesFromAsset(String path, int width) async {
+//  ByteData data = await rootBundle.load(path);
+//  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+//      targetWidth: width);
+//  ui.FrameInfo fi = await codec.getNextFrame();
+//  return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
+//      .buffer
+//      .asUint8List();
+//}
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
@@ -45,20 +45,20 @@ class _SplashScreenState extends State<SplashScreen>
     Campus.loy = Campus.fromJson(campusData[1]);
 
     IndoorData.shortest = Dijkstra.fromJson(campusData);
-    Campus.sgw.buildings.forEach((building) async {
-      if (building.logo != null)
-        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
-        //     ImageConfiguration(size: Size(350, 350)), building.logo);
-        Building.icons[building] = BitmapDescriptor.fromBytes(
-            await getBytesFromAsset(building.logo, 350));
-    });
-    Campus.loy.buildings.forEach((building) async {
-      if (building.logo != null)
-        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
-        //     ImageConfiguration(size: Size(350, 350)), building.logo);
-        Building.icons[building] = BitmapDescriptor.fromBytes(
-            await getBytesFromAsset(building.logo, 350));
-    });
+//    Campus.sgw.buildings.forEach((building) async {
+//      if (building.logo != null)
+//        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
+//        //     ImageConfiguration(size: Size(350, 350)), building.logo);
+//        Building.icons[building] = BitmapDescriptor.fromBytes(
+//            await getBytesFromAsset(building.logo, 350));
+//    });
+//    Campus.loy.buildings.forEach((building) async {
+//      if (building.logo != null)
+//        // Building.icons[building] = await BitmapDescriptor.fromAssetImage(
+//        //     ImageConfiguration(size: Size(350, 350)), building.logo);
+//        Building.icons[building] = BitmapDescriptor.fromBytes(
+//            await getBytesFromAsset(building.logo, 350));
+//    });
   }
 
   @override

@@ -60,24 +60,24 @@ class _MapWidgetState extends State<MapWidget> {
     }
 
     ///Create markers here
-    Set<Marker> markers = {};
-    _buildings.allBuildings.forEach((building) {
-      if (building.latitude != null && building.longitude != null) {
-        markers.add(Marker(
-          markerId: MarkerId(building.buildingInitials),
-          anchor: const Offset(0.5, 0.5),
-          position: LatLng(building.latitude, building.longitude),
-          icon: Building.icons[building],
-          onTap: () {
-            showModalBottomSheet(
-                context: context,
-                builder: (builder) {
-                  return BottomSheetWidget(building);
-                });
-          },
-        ));
-      }
-    });
+//    Set<Marker> markers = {};
+//    _buildings.allBuildings.forEach((building) {
+//      if (building.latitude != null && building.longitude != null) {
+//        markers.add(Marker(
+//          markerId: MarkerId(building.buildingInitials),
+//          anchor: const Offset(0.5, 0.5),
+//          position: LatLng(building.latitude, building.longitude),
+//          icon: Building.icons[building],
+//          onTap: () {
+//            showModalBottomSheet(
+//                context: context,
+//                builder: (builder) {
+//                  return BottomSheetWidget(building);
+//                });
+//          },
+//        ));
+//      }
+//    });
     return Stack(
       children: <Widget>[
         GoogleMap(
@@ -89,7 +89,7 @@ class _MapWidgetState extends State<MapWidget> {
             buildingsEnabled: false,
             mapType: MapType.normal,
             polygons: _buildings.allPolygons,
-            markers: Set.of(markers),
+//            markers: Set.of(markers),
             indoorViewEnabled: false,
             trafficEnabled: false,
             initialCameraPosition: _initialCamera,
