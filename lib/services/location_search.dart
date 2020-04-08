@@ -36,10 +36,14 @@ class LocationSearch extends SearchDelegate {
               case "H":
                 {
                   if (suggestionList[index][1].toString() == "A") {
+                    mapData.animateTo(constants.hBuilding.latitude,
+                        constants.hBuilding.longitude);
                     mapData.changeCampus('sgw');
                     mapData.controllerDestination = "Hall Building, Montreal";
                     mapData.changeEnd(constants.hBuilding);
                   } else {
+                    mapData.animateTo(constants.hBuilding.latitude,
+                        constants.hBuilding.longitude);
                     mapData.changeCampus('sgw');
                     mapData.controllerDestination =
                         suggestionList[index].toString();
@@ -50,6 +54,8 @@ class LocationSearch extends SearchDelegate {
 
               case "M":
                 {
+                  mapData.animateTo(constants.jmsbBuilding.latitude,
+                      constants.jmsbBuilding.longitude);
                   mapData.changeCampus('sgw');
                   mapData.controllerDestination =
                       suggestionList[index].toString();
@@ -59,6 +65,8 @@ class LocationSearch extends SearchDelegate {
 
               case "L":
                 {
+                  mapData.animateTo(
+                      constants.loyola.latitude, constants.loyola.longitude);
                   mapData.changeCampus('loyola');
                   mapData.controllerDestination = "Loyola Campus, Montreal";
                   mapData.changeEnd(constants.loyola);
@@ -67,6 +75,8 @@ class LocationSearch extends SearchDelegate {
 
               case "J":
                 {
+                  mapData.animateTo(constants.hBuilding.latitude,
+                      constants.hBuilding.longitude);
                   mapData.changeCampus('sgw');
                   mapData.controllerDestination =
                       "John Molson Business, Montreal";
@@ -75,6 +85,8 @@ class LocationSearch extends SearchDelegate {
                 break;
               case "F":
                 {
+                  mapData.animateTo(constants.fgBuilding.latitude,
+                      constants.fgBuilding.longitude);
                   mapData.changeCampus('sgw');
                   mapData.controllerDestination = "FG Building, Montreal";
                   mapData.changeEnd(constants.fgBuilding);
@@ -83,6 +95,8 @@ class LocationSearch extends SearchDelegate {
 
               default:
                 {
+                  mapData.animateTo(
+                      constants.sgw.latitude, constants.sgw.longitude);
                   mapData.changeCampus('sgw');
                   mapData.controllerDestination = "SGW Campus, Montreal";
                   mapData.changeEnd(constants.sgw);
@@ -91,6 +105,7 @@ class LocationSearch extends SearchDelegate {
             }
             mapData.changeMode("driving");
             mapData.setItinerary();
+            Navigator.of(context).pop();
           },
           leading: Icon(Icons.location_city),
           title: RichText(
