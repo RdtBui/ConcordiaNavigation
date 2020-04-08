@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 
 ///Observer Pattern
 ///Handles all the data related to the map, listens to changes and notifies listeners.
@@ -107,10 +108,10 @@ class MapData extends ChangeNotifier {
     final c = await _completer.future;
     final p = CameraPosition(
       target: LatLng(lat, lng),
-      zoom: 16.5,
-      tilt: 30.440717697143555,
-      bearing: 30.8334901395799,
+      zoom: constants.CAMERA_ZOOM,
+      tilt: constants.CAMERA_TILT,
+      bearing: constants.CAMERA_BEARING,
     );
-    c.animateCamera(CameraUpdate.newCameraPosition(p));
+    c.moveCamera(CameraUpdate.newCameraPosition(p));
   }
 }
