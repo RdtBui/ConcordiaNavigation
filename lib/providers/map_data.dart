@@ -16,6 +16,10 @@ class MapData extends ChangeNotifier {
   double swapButtonTop;
   double locationButtonTop;
 
+  String startIndoor;
+  String endIndoor;
+  bool generateIndoor = false;
+
   String startLocation = "H937";
   String endLocation = "MB1.301";
 

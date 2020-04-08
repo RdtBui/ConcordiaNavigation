@@ -41,10 +41,14 @@ class LocationSearch extends SearchDelegate {
                     mapData.changeCampus('sgw');
                     mapData.controllerDestination = "Hall Building, Montreal";
                     mapData.changeEnd(constants.hBuilding);
+                    mapData.generateIndoor = false;
                   } else {
                     mapData.animateTo(constants.hBuilding.latitude,
                         constants.hBuilding.longitude);
                     mapData.changeCampus('sgw');
+                    mapData.generateIndoor = true;
+                    mapData.startIndoor = "H1entrance";
+                    mapData.endIndoor = suggestionList[index].toString();
                     mapData.controllerDestination =
                         suggestionList[index].toString();
                     mapData.changeEnd(constants.hBuilding);
@@ -59,6 +63,9 @@ class LocationSearch extends SearchDelegate {
                   mapData.changeCampus('sgw');
                   mapData.controllerDestination =
                       suggestionList[index].toString();
+                  mapData.generateIndoor = true;
+                  mapData.startIndoor = "MBentrance";
+                  mapData.endIndoor = suggestionList[index].toString();
                   mapData.changeEnd(constants.jmsbBuilding);
                 }
                 break;
@@ -70,6 +77,7 @@ class LocationSearch extends SearchDelegate {
                   mapData.changeCampus('loyola');
                   mapData.controllerDestination = "Loyola Campus, Montreal";
                   mapData.changeEnd(constants.loyola);
+                  mapData.generateIndoor = false;
                 }
                 break;
 
@@ -81,6 +89,7 @@ class LocationSearch extends SearchDelegate {
                   mapData.controllerDestination =
                       "John Molson Business, Montreal";
                   mapData.changeEnd(constants.jmsbBuilding);
+                  mapData.generateIndoor = false;
                 }
                 break;
               case "F":
@@ -90,6 +99,7 @@ class LocationSearch extends SearchDelegate {
                   mapData.changeCampus('sgw');
                   mapData.controllerDestination = "FG Building, Montreal";
                   mapData.changeEnd(constants.fgBuilding);
+                  mapData.generateIndoor = false;
                 }
                 break;
 
@@ -100,6 +110,7 @@ class LocationSearch extends SearchDelegate {
                   mapData.changeCampus('sgw');
                   mapData.controllerDestination = "SGW Campus, Montreal";
                   mapData.changeEnd(constants.sgw);
+                  mapData.generateIndoor = false;
                 }
                 break;
             }

@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 
 class PainterService extends CustomPainter {
   int index;
-  PainterService(this.index);
+  String startLocation;
+  String endLocation;
+  PainterService(this.index, this.startLocation, this.endLocation);
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint();
     paint.color = Colors.red;
     paint.style = PaintingStyle.stroke;
     paint.strokeWidth = 3.0;
-    String startLocation = "";
-    String endLocation = "";
+
     Set<IndoorLocation> locH1 = new Set<IndoorLocation>();
     Set<IndoorLocation> locH8 = new Set<IndoorLocation>();
     Set<IndoorLocation> locH9 = new Set<IndoorLocation>();

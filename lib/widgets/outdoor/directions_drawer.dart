@@ -63,7 +63,7 @@ class DirectionsDrawer extends StatelessWidget {
                               icon: Icon(Icons.maximize),
                               iconSize: 30.0,
                               color: constants.whiteColor,
-                              onPressed: null,
+                              onPressed: () {},
                             ),
                           ),
                           Container(
@@ -73,17 +73,22 @@ class DirectionsDrawer extends StatelessWidget {
                                 Container(
                                   height: SizeConfig.blockSizeVertical * 6,
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       IconButton(
-                                        padding: EdgeInsets.only(left: 30.0),
-                                        icon: Icon(Icons.accessibility),
-                                        color: Colors.transparent,
-                                        onPressed: null,
+                                        padding: EdgeInsets.only(
+                                            left: 20.0, top: 5.0),
+                                        icon: Icon(Icons.accessible),
+                                        iconSize: 30.0,
+                                        color: constants.whiteColor,
+                                        onPressed: () {},
                                       ),
+                                      SizedBox(
+                                          width:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  13),
                                       Row(
                                         children: <Widget>[
                                           IconButton(
@@ -159,8 +164,11 @@ class DirectionsDrawer extends StatelessWidget {
                                           ),
                                         ],
                                       ),
+                                      SizedBox(
+                                          width:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  13),
                                       IconButton(
-                                        padding: EdgeInsets.only(right: 30.0),
                                         icon: Icon(Icons.close),
                                         color: constants.whiteColor,
                                         onPressed: () {
@@ -375,7 +383,7 @@ class DirectionsDrawer extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: SizeConfig.safeBlockVertical * 43,
+                      height: SizeConfig.safeBlockVertical * 42,
                       color: constants.whiteColor,
                       child: FutureBuilder(
                           future: fetchItinerary(),
@@ -453,7 +461,7 @@ class DirectionsDrawer extends StatelessWidget {
                           }),
                     ), // list of directions
                     Container(
-                      height: SizeConfig.safeBlockVertical * 15,
+                      height: SizeConfig.safeBlockVertical * 17,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(3.0)),
                         color: constants.appColor,

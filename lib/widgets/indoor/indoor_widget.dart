@@ -7,7 +7,9 @@ import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 class IndoorWidget extends StatelessWidget {
   final int index;
   final bool showDirections;
-  IndoorWidget(this.index, this.showDirections);
+  final String start;
+  final String end;
+  IndoorWidget(this.index, this.showDirections, this.start, this.end);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class IndoorWidget extends StatelessWidget {
             children: <Widget>[
               Painters.painters[index],
               showDirections
-                  ? CustomPaint(painter: PainterService(index))
+                  ? CustomPaint(painter: PainterService(index, start, end))
                   : Container(),
             ],
           ),

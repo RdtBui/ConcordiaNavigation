@@ -1,8 +1,10 @@
+import 'package:concordia_navigation/providers/map_data.dart';
 import 'package:concordia_navigation/services/painters.dart';
 import 'package:concordia_navigation/widgets/indoor/indoor_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:concordia_navigation/storage/app_constants.dart' as constants;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class Arguments {
   final bool showDirections;
@@ -17,6 +19,8 @@ class IndoorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Arguments args = ModalRoute.of(context).settings.arguments;
+    String startDestination = Provider.of<MapData>(context).startIndoor;
+    String endDestination = Provider.of<MapData>(context).endIndoor;
     return Scaffold(
       backgroundColor: constants.whiteColor,
       appBar: AppBar(
@@ -32,7 +36,8 @@ class IndoorPage extends StatelessWidget {
               controller: controller,
               itemCount: Painters.painters.length,
               itemBuilder: (context, index) {
-                return IndoorWidget(index, args.showDirections);
+                return IndoorWidget(index, args.showDirections,
+                    startDestination, endDestination);
               },
             ),
           ),
