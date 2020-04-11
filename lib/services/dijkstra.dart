@@ -66,10 +66,7 @@ class Dijkstra {
         _pq = PriorityQueue<Node>();
 
   List<Node> pathTo(String start, String end) {
-    if (_nodes[end].previous == null) {
-      _compute(start);
-    }
-
+    _compute(start);
     Queue<Node> inOrder = Queue<Node>();
     inOrder.addFirst(_nodes[end]);
     bool stop = false;
